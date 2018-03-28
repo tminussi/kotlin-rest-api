@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.20'
+		kotlinVersion = '1.2.30'
 		springBootVersion = '1.5.10.RELEASE'
 	}
 	repositories {
@@ -40,9 +40,11 @@ repositories {
 
 
 dependencies {
+	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.0.5.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.0.3.RELEASE'
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
+	compile('com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
