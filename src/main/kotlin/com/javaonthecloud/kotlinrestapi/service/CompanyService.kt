@@ -9,8 +9,13 @@ class CompanyService(
         val companyRepository: CompanyRepository
 ) {
 
-    fun findByCnpj(cnpj: String): Company = companyRepository.findByCnpj(cnpj)
-
     fun save(company: Company): Company = companyRepository.save(company)
+
+    fun findAll(cnpj: String): List<Company> {
+        if (cnpj.isBlank()) {
+            return companyRepository.findAll()
+        }
+        return companyRepository.findAllByCnpj(cnpj)
+    }
 
 }

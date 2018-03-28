@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
 data class Employee (
-        @Id val id: String,
+        @Id val id: String?,
         val name: String,
         val email: String,
         val password: String,

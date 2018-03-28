@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CompanyRepository : MongoRepository<Company, String> {
 
-    fun findByCnpj(cnpj: String): Company
+    fun findAllByCnpj(cnpj: String): List<Company>
 }

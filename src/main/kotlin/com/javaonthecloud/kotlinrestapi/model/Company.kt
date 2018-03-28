@@ -8,4 +8,5 @@ data class Company (
         @Id val id: String? = null,
         val razaoSocial: String,
         val cnpj: String
+
 )
