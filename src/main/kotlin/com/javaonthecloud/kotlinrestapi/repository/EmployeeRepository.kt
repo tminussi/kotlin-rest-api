@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface EmployeeRepository : MongoRepository<Employee, String> {
 
-    fun findByEmail(email: String): Collection<Employee>
+    fun findByEmail(email: String): Employee
 
     fun findByCpf(cpf: String): Collection<Employee>
 }

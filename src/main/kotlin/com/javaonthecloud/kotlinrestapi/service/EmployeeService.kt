@@ -12,14 +12,14 @@ class EmployeeService(
 
     fun findAll(filter: EmployeeFilter): Collection<Employee> {
         if (filter.email.isNotBlank()) {
-            return findByEmail(filter.email)
+            return listOf(findByEmail(filter.email))
         } else if (filter.cpf.isNotBlank()) {
             return findByCpf(filter.cpf)
         }
         return employeeRepository.findAll()
     }
 
-    private fun findByEmail(email: String): Collection<Employee> = employeeRepository.findByEmail(email)
+    fun findByEmail(email: String): Employee = employeeRepository.findByEmail(email)
 
     private fun findByCpf(cpf: String): Collection<Employee> = employeeRepository.findByCpf(cpf)
 

@@ -5,6 +5,7 @@ import com.javaonthecloud.kotlinrestapi.model.Entry
 import com.javaonthecloud.kotlinrestapi.repository.EntryRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 
 @Service
@@ -12,6 +13,7 @@ class EntryService(
         val entryRepository: EntryRepository
 ) {
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     fun findByEmployeeId(filter: EntryFilter): Page<Entry> = entryRepository.findByEmployeeId(filter.employeeId, PageRequest(filter.page, filter.size))
 
     fun save(entry: Entry): Entry = entryRepository.save(entry)
