@@ -1,5 +1,6 @@
 package com.javaonthecloud.kotlinrestapi.service
 
+import com.javaonthecloud.kotlinrestapi.controller.filter.EmployeeFilter
 import com.javaonthecloud.kotlinrestapi.model.Employee
 import com.javaonthecloud.kotlinrestapi.repository.EmployeeRepository
 import org.springframework.stereotype.Service
@@ -9,11 +10,11 @@ class EmployeeService(
         private val employeeRepository: EmployeeRepository
 ) {
 
-    fun findAll(email: String, cpf: String): Collection<Employee> {
-        if (email.isNotBlank()) {
-            return findByEmail(email)
-        } else if (cpf.isNotBlank()) {
-            return findByCpf(cpf)
+    fun findAll(filter: EmployeeFilter): Collection<Employee> {
+        if (filter.email.isNotBlank()) {
+            return findByEmail(filter.email)
+        } else if (filter.cpf.isNotBlank()) {
+            return findByCpf(filter.cpf)
         }
         return employeeRepository.findAll()
     }

@@ -1,5 +1,6 @@
 package com.javaonthecloud.kotlinrestapi.controller
 
+import com.javaonthecloud.kotlinrestapi.controller.filter.EmployeeFilter
 import com.javaonthecloud.kotlinrestapi.model.Employee
 import com.javaonthecloud.kotlinrestapi.service.EmployeeService
 import org.springframework.web.bind.annotation.*
@@ -14,8 +15,5 @@ class EmployeeController(
     fun create(@RequestBody employee: Employee): Employee = employeeService.save(employee)
 
     @GetMapping
-    fun getAll(@RequestParam(required = false, defaultValue = "") email: String,
-               @RequestParam(required = false, defaultValue = "") cpf: String,
-               @RequestParam(required = false, defaultValue = "1") size: Int,
-               @RequestParam(required = false, defaultValue = "0") page: Int): Collection<Employee> = employeeService.findAll(email, cpf)
+    fun getAll(filter: EmployeeFilter): Collection<Employee> = employeeService.findAll(filter)
 }

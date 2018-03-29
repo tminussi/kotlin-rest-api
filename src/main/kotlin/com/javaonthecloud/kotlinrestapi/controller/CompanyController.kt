@@ -14,5 +14,5 @@ class CompanyController(
     fun create(@RequestBody company: Company): Company = companyService.save(company)
 
     @GetMapping
-    fun findAll(cnpj: String): List<Company> = companyService.findAll(cnpj)
+    fun findAll(@RequestParam(required = false, defaultValue = "") cnpj: String): List<Company> = companyService.findAll(cnpj)
 }
